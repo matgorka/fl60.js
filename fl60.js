@@ -5,7 +5,8 @@
     let generator,
         getInterval,
         loop,
-        now;
+        now,
+        c;
 
     generator = (function*() {
       for (;;) {
@@ -17,7 +18,8 @@
 
     getInterval = () => generator.next().value;
     frameLenArr = Array(60).fill(0).map(x => getInterval());
-    now         = Date.now();
+    c           = getInterval();
+    now         = Date.now() - c;
 
     loop = (callback, prevInt) => {
       let int,
@@ -37,7 +39,7 @@
       setTimeout(loop, int, callback, int);
     };
 
-    loop(callback, 0);
+    loop(callback, c);
     fl60 = () => void 0;
   }
 
