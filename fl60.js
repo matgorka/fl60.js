@@ -18,8 +18,6 @@
 
     getInterval = () => generator.next().value;
     frameLenArr = Array(60).fill(0).map(x => getInterval());
-    c           = getInterval();
-    now         = Date.now() - c;
 
     loop = (callback, prevInt) => {
       let int,
@@ -39,8 +37,10 @@
       setTimeout(loop, int, callback, int);
     };
 
-    loop(callback, c);
+    c    = getInterval();
     fl60 = () => void 0;
+    now  = Date.now() - c;
+    loop(callback, c);
   }
 
   function getFPS() {
