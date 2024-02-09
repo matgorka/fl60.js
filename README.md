@@ -15,6 +15,3 @@ Returns current FPS: a value between 0 and 60. If fl60 was never called returns 
 
 ## Implementation
 fl60 uses setTimeout under the hood.
-
-## getFPS accuracy
-getFPS is the most accurate if FPS is near to 60. The further it goes down the longer time it takes to accurately represent the FPS value. To be fixed.

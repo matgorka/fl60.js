@@ -44,7 +44,13 @@
   }
 
   function getFPS() {
-    return 60000 / frameLenArr.reduce((acc, x) => acc + x, 0);
+    let i,
+        t = 0;
+
+    for (i = 59; i >= 0 && t < 1000; --i)
+      t += frameLenArr[i];
+
+    return (59 - i) * 1000 / t;
   }
 
   Object.assign(g, { fl60, getFPS });
